@@ -4,15 +4,10 @@ import java.util.List;
 
 public class Submarine {
 
-  private int x;
-  private int y;
+  public static int x = 0;
+  public static int y = 0;
 
-  public Submarine(int horizontal, int depth) {
-    this.x = horizontal;
-    this.y = depth;
-  }
-
-  public void move(List<String> instructions) {
+  public static int move(List<String> instructions) {
 
     int n = 0;
     while (n < instructions.size()) {
@@ -38,16 +33,17 @@ public class Submarine {
         continue;
       }
 
-      x += x11;
-      n++;
+      if ("forward".equals(substring0)) {
+        x += x11;
+        n++;
+        continue;
+      }
+
+      x = 0;
+      y = 0;
     }
+
+    return x*y;
   }
 
-  public int getX() {
-    return this.x;
-  }
-
-  public int getY() {
-    return this.y;
-  }
 }
