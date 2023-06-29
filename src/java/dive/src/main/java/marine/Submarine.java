@@ -13,26 +13,28 @@ public class Submarine {
   }
 
   public void move(List<Instruction> instructions) {
-    instructions.forEach(this::move);
+
+    for (int n = 0; n < instructions.size(); n++) {
+
+      Instruction instruction = instructions.get(n);
+
+
+      String text = instruction.getText();
+
+      if ("down".equals(text)) {
+        position = position.withDepth(position.getDepth() + instruction.getX());
+        continue;
+      }
+
+      if ("up".equals(text)) {
+        position = position.withDepth(position.getDepth() - instruction.getX());
+        continue;
+      }
+
+      position = position.withHorizontal(position.getHorizontal() + instruction.getX());
+
+
+    }
   }
 
-  private void move(Instruction instruction) {
-
-
-    String text = instruction.getText();
-
-    if ("down".equals(text)) {
-      position = position.withDepth(position.getDepth() + instruction.getX());
-      return;
-    }
-
-    if ("up".equals(text)) {
-      position = position.withDepth(position.getDepth() - instruction.getX());
-      return;
-    }
-
-    position = position.withHorizontal(position.getHorizontal() + instruction.getX());
-
-
-  }
 }
