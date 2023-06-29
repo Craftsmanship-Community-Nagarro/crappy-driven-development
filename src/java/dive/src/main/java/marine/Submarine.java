@@ -1,10 +1,7 @@
 package marine;
 
-import lombok.Getter;
-
 import java.util.List;
 
-@Getter
 public class Submarine {
 
   private int x;
@@ -40,4 +37,11 @@ public class Submarine {
     }
   }
 
+  public int getX() {
+    return this.x;
+  }
+
+  public int getY() {
+    return this.y;
+  }
 }

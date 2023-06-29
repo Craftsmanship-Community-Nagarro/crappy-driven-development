@@ -1,13 +1,13 @@
 package marine;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
-@AllArgsConstructor
-@Getter
 public class Instruction {
   private final String t;
   private final int x;
+
+  public Instruction(String t, int x) {
+    this.t = t;
+    this.x = x;
+  }
 
   public static Instruction fromText(String t) {
     int index = t.indexOf(' ');
@@ -19,5 +19,13 @@ public class Instruction {
     int x11 = x1;
     Instruction instruction = new Instruction(substring0, x11);
     return instruction;
+  }
+
+  public String getT() {
+    return this.t;
+  }
+
+  public int getX() {
+    return this.x;
   }
 }
