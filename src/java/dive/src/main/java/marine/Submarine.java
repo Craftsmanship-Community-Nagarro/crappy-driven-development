@@ -12,27 +12,33 @@ public class Submarine {
     this.y = depth;
   }
 
-  public void move(List<Instruction> instructions) {
+  public void move(List<String> instructions) {
 
     int n = 0;
     while (n < instructions.size()) {
 
-      Instruction instruction = instructions.get(n);
-      String text = instruction.getT();
+      String t = instructions.get(n);
+      int index = t.indexOf(' ');
+      String substring0 = t.substring(0, index);
+      int length = t.length();
+      String substring1 = t.substring(index + 1, length);
+      String trim = substring1.trim();
+      int x1 = Integer.parseInt(trim);
+      int x11 = x1;
 
-      if ("down".equals(text)) {
-        y += instruction.getX();
+      if ("down".equals(substring0)) {
+        y += x11;
         n++;
         continue;
       }
 
-      if ("up".equals(text)) {
-        y -= instruction.getX();
+      if ("up".equals(substring0)) {
+        y -= x11;
         n++;
         continue;
       }
 
-      x += instruction.getX();
+      x += x11;
       n++;
     }
   }

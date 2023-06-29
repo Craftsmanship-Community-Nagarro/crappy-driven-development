@@ -1,12 +1,10 @@
 package marine;
 
-import org.junit.jupiter.api.Test;
-
+import static org.assertj.core.api.Assertions.*;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.jupiter.api.Test;
 
 // Advent of code instructions available here : https://adventofcode.com/2021/day/2
 class SubmarineTests {
@@ -24,9 +22,9 @@ class SubmarineTests {
         return submarine.getY() * submarine.getX();
     }
 
-    private List<Instruction> loadInstructions() {
+    private List<String> loadInstructions() {
         return Arrays.stream(FileUtils.getInputAsSeparatedLines("submarine.txt"))
-                .map(Instruction::fromText)
+//                .map(Instruction::fromText)
                 .collect(Collectors.toUnmodifiableList());
     }
 }
