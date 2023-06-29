@@ -6,10 +6,13 @@ import java.util.List;
 
 @Getter
 public class Submarine {
-  private Position position;
+
+  private int x;
+  private int y;
 
   public Submarine(int horizontal, int depth) {
-    this.position = new Position(horizontal, depth);
+    this.x = horizontal;
+    this.y = depth;
   }
 
   public void move(List<Instruction> instructions) {
@@ -18,25 +21,21 @@ public class Submarine {
     while (n < instructions.size()) {
 
       Instruction instruction = instructions.get(n);
-
-
       String text = instruction.getText();
 
       if ("down".equals(text)) {
-        position = position.withDepth(position.getDepth() + instruction.getX());
+        y += instruction.getX();
         n++;
         continue;
       }
 
       if ("up".equals(text)) {
-        position = position.withDepth(position.getDepth() - instruction.getX());
+        y -= instruction.getX();
         n++;
         continue;
       }
 
-      position = position.withHorizontal(position.getHorizontal() + instruction.getX());
-
-
+      x += instruction.getX();
       n++;
     }
   }
