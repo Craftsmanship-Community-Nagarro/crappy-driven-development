@@ -21,7 +21,7 @@ public class Submarine {
     while (n < instructions.size()) {
 
       Instruction instruction = instructions.get(n);
-      String text = instruction.getText();
+      String text = instruction.getT();
 
       if ("down".equals(text)) {
         y += instruction.getX();
