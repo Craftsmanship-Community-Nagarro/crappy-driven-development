@@ -14,7 +14,8 @@ public class Submarine {
 
   public void move(List<Instruction> instructions) {
 
-    for (int n = 0; n < instructions.size(); n++) {
+    int n = 0;
+    while (n < instructions.size()) {
 
       Instruction instruction = instructions.get(n);
 
@@ -23,17 +24,20 @@ public class Submarine {
 
       if ("down".equals(text)) {
         position = position.withDepth(position.getDepth() + instruction.getX());
+        n++;
         continue;
       }
 
       if ("up".equals(text)) {
         position = position.withDepth(position.getDepth() - instruction.getX());
+        n++;
         continue;
       }
 
       position = position.withHorizontal(position.getHorizontal() + instruction.getX());
 
 
+      n++;
     }
   }
 
